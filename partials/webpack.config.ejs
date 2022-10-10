@@ -1,0 +1,62 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+	entry: {
+		bundle: path.resolve(__dirname, 'src/App.js'),
+	},
+	output: {
+		path: path.resolve(__dirname, 'web'),
+		filename: '[name].js',
+		clean: true,
+		assetModuleFilename: '[name][ext]',
+	},
+	devtool: 'source-map',
+	devServer: {
+		static: {
+			directory: path.resolve(__dirname, 'web'),
+		},
+		port: 3000,
+		open: true,
+		hot: true,
+		compress: true,
+		historyApiFallback: true,
+	},
+	externals: {
+		"firebase/firestore": "require('firebase/firestore')"
+	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+					},
+				},
+			},
+			{	
+				test: /\.(eot|otf|ttf|woff|woff2)$/,
+				type: 'asset/resource',
+			},
+			{
+				test: /\.(png|jpg|jpeg|gif)$/i,
+				type: 'asset',
+			},
+			{
+				test: /\.svg$/i,
+				type: 'asset/source',
+			},
+		],
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			title: '<%= appName %>',
+			favicon: 'assets/logos/favicon.svg',
+			filename: 'index.html',
+			template: 'src/index.html',
+		})
+	]
+};
