@@ -41,7 +41,7 @@ const template = () => {
         self: {expand: 1}, content: {h: 'center', v: 'top', direction: 'column'},
         style: readStyle('page')})([
     /* Greeting text */
-    Text({flavor: readFlavor('title', 'primaryGradient'), style: {opacity: read('opacity'), 
+    Text({flavor: readFlavor('title', 'primary'), style: {opacity: read('opacity'), 
           fontFamily: read('fontFamily'), marginTop: 80}})('Hello ' + read('greeting') + '!'),
 
     /* Text input to update greeting */
