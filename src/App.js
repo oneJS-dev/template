@@ -33,14 +33,16 @@ const style = {
         backgroundColor: '#F1F1F1',
         position: 'absolute',
         width: '100%',
-        minHeight: '100vh'
+        height: '100%',
+        zIndex: 1
     },
     navbar: {
-        position: 'fixed',
+        position: 'absolute',
         bottom: 0,
         height: 80,
         width: '100%',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        zIndex: 10
     }
 };
 
@@ -60,7 +62,8 @@ const App = () => {
                 flavor: readFlavor('title', 'primary'),
                 style: {
                     opacity: read('opacity'),
-                    fontFamily: read('fontFamily')
+                    fontFamily: read('fontFamily'),
+                    fontWeight: 'normal'
                 }
             })('Hello ' + read('greeting') + '!'),
 
@@ -103,7 +106,10 @@ const App = () => {
             style: readStyle('page')
         })([
             /* About page text */
-            Text({flavor: readFlavor('section')})('Developed with ❤️ by oneJS'),
+            Text({
+                flavor: readFlavor('section'),
+                link: [{text: 'oneJS', target: '_blank', url: 'https://onejs.dev'}]
+            })('Developed with ❤️ by oneJS'),
             Text()('Running on ' + os)
         ]),
 
