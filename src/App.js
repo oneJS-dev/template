@@ -121,7 +121,7 @@ const App = () => {
             /* Home navbar item */
             Input({
                 type: 'button',
-                icon: icons['oneJS'],
+                // icon: icons['oneJS'], //Currently not ready for native. Uncomment for web
                 title: 'Home',
                 url: '/',
                 content: {h: 'center', v: 'center', direction: 'column'},
@@ -130,7 +130,7 @@ const App = () => {
             /* About navbar item */
             Input({
                 type: 'button',
-                icon: icons['book'],
+                // icon: icons['book'], //Currently not ready for native. Uncomment for web
                 title: 'About',
                 url: '/about',
                 content: {h: 'center', v: 'center', direction: 'column'},
